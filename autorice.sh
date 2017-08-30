@@ -4,8 +4,8 @@ color=( $(convert $1 +dither +despeckle -colors 16 -unique-colors txt:-| grep -o
 clist="ColorPalette=${colors[0]};${colors[1]};${colors[2]};${colors[3]};${colors[4]};${colors[5]};${colors[6]};${colors[7]};${colors[8]};${colors[9]};${colors[10]};${colors[11]};${colors[12]};${colors[13]};${colors[14]};${colors[15]};"
 clist=$(echo $clist | tr -d " ")
 
-#update term colorscheme
-sed -i "s/ColorPalette.*/$clist/g" ~/.config/xfce4/terminal/terminalrc
+#update saljs's term colorscheme
+#sed -i "s/ColorPalette.*/$clist/g" ~/.config/xfce4/terminal/terminalrc
 
 #pretty name for color
 black=${color[0]}		#0
@@ -86,11 +86,6 @@ sed -i "s/color13:.*/color13:	$light_magenta/g" ~/.Xresources
 sed -i "s/color14:.*/color14:	$light_cyan/g" ~/.Xresources
 sed -i "s/color15:.*/color15:	$white/g" ~/.Xresources
 
-#theme rofi
-sed -i "s/rofi\.color-normal:.*/rofi\.color-normal:\ #2F343F,\ $white,\ #2F343F,\ #2F343F,\ $light_blue/g" ~/.config/rofi/config
-sed -i "s/rofi\.color-urgent:.*/rofi\.color-urgent:\ #2F343F,\ $red,\ #2F343F,\ #2F343F,\ $light_blue/g" ~/.config/rofi/config
-sed -i "s/rofi\.color-active:.*/rofi\.color-active:\ #2F343F,\ $light_red\ #2F343F,\ #2F343F,\ $light_blue/g" ~/.config/rofi/config
-sed -i "s/rofi\.color-window:.*/rofi\.color-window:\ #2F343F/g" ~/.config/rofi/config
 
 feh  --bg-scale $1
 i3-msg reload
